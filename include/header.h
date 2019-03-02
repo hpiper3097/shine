@@ -8,7 +8,6 @@
 #include "shader.h"
 //#include "log.h"
 #include <cassert>
-#include <boost/static_assert.hpp>
 #include "texture.h"
 #include "stb_image.h"
 #include <glm.hpp>
