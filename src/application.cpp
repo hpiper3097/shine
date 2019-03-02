@@ -1,5 +1,5 @@
 #include "../include/application.h"
-#include "../include/my_assert.h"
+#include <iostream>
 
 Application::Application(const unsigned int w, const unsigned int h)
 //	: window((*void), std::default_delete<(*void)> //default initializer;
@@ -22,7 +22,10 @@ GLFWwindow* Application::Window()
 
 void Application::init()
 {
-	ASSERT(glfwInit() == GL_TRUE); GLFW = true;
+//	ASSERT(glfwInit() == GL_TRUE); GLFW = true;
+	if(!glfwInit())
+		std::cerr << "GLFW failed to initialize!" << std::endl;
+	GLFW = true;
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); //version (major)3.(minor)3
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); //explicitly using core
@@ -32,11 +35,16 @@ void Application::init()
 #endif
 
 	window.reset(glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "GLFW OpenGL Test", nullptr, nullptr)); //window creation
-	ASSERT(window.get() != nullptr);
+//	ASSERT(window.get() != nullptr);
+	if(window.get() == nullptr)
+		std::cerr << "Window creation failed!" << std::endl;
 	glfwMakeContextCurrent(window.get());
 	glfwSetFramebufferSizeCallback(window.get(), framebuffer_size_callback); //register callbacks after window creation and before gameloop
 
-	ASSERT(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)); GLAD = true;//load glad
+//	ASSERT(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)); GLAD = true;//load glad
+	if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+		std::cerr << "Glad failed to initialize!" << std::endl;
+	GLAD = true;
 }
 
 void Application::kill()
