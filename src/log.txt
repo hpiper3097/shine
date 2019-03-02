@@ -1,0 +1,2 @@
+Renderer: Mesa DRI Intel(R) Haswell Mobile 
+OpenGL version supported 3.3 (Core Profile) Mesa 13.0.6
