@@ -6,12 +6,15 @@
 void processInput(GLFWwindow* window, float &mixVar);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+//const values
 const unsigned int SCR_WIDTH = 800, SCR_HEIGHT = 600;
-float deltaTime = 0.0f, lastFrame = 0.0f;
 float lastX = 400, lastY = 300;
 float yaw = -90.f, pitch = 0.f;
 bool firstMouse = true;
 float fov = 45.0f;
+//while vars
+float deltaTime = 0.0f, lastFrame = 0.0f;
+float mixVar = 0.f;
 
 float verticies[] = {
 	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
@@ -70,13 +73,6 @@ glm::vec3 cubePositions[] = {
 	glm::vec3(-1.3f,  1.0f, -1.5f)
 };
 
-/*float verticies2[] =
-{
-	-0.5f, -0.75f, 0.0f,
-	0.5f, -0.5f, 0.0f,
-	0.0f, 0.5f, 0.0f
-};*/
-
 GLuint indices[] =
 {
 	0, 1, 3,
@@ -88,10 +84,6 @@ Camera cam(glm::vec3(0.0f, 0.0f, 3.0f));
 int main()
 {
 	Application app(SCR_WIDTH, SCR_HEIGHT);
-	const GLubyte* renderer = glGetString(GL_RENDERER); // get renderer strin
-    const GLubyte* version = glGetString(GL_VERSION); // version as a strin
-    printf("Renderer: %s\n", renderer);
-    printf("OpenGL version supported %s\n", version);
 
 	glfwSetCursorPosCallback(app.Window(), mouse_callback);
 	glfwSetScrollCallback(app.Window(), scroll_callback);
@@ -137,14 +129,6 @@ int main()
 	shader1.use();
 	shader1.setInt("texture1", 0);
 	shader1.setInt("texture2", 1);
-
-	auto mixVar = 0.f;
-
-
-	//glm::mat4 model;
-	//model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-
-	glEnable(GL_DEPTH_TEST);
 
 	while (!glfwWindowShouldClose(app.Window()))//game loop
 	{
