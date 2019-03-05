@@ -45,6 +45,10 @@ void Application::init()
 	if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 		std::cerr << "Glad failed to initialize!" << std::endl;
 	GLAD = true;
+	const GLubyte* renderer = glGetString(GL_RENDERER);
+	const GLubyte* version = glGetString(GL_VERSION);
+	printf("Renderer: %s\n", renderer);
+	printf("GL version supported: %s\n", version);
 }
 
 void Application::kill()

@@ -91,7 +91,7 @@ int main()
 	glEnable(GL_DEPTH_TEST);
 
 	GLuint VBO, VAO, EBO; //vertex array object, vertex buffer object, element buffer object
-	glGenVertexArrays(1, &VAO);
+	glGenVertexArrays(1, &VAO); //gens VAO; VAO's contain multiple VBO's and are for containing data for a complete rendered object
 	glGenBuffers(1, &VBO);
 	glGenBuffers(1, &EBO);
 	//bind vertex array first, then bind buffer, then configure buffer
@@ -122,9 +122,6 @@ int main()
 	Texture tex1("../textures/container.jpg", GL_RGB, GL_TEXTURE_2D, GL_TEXTURE0);
 	stbi_set_flip_vertically_on_load(true);
 	Texture tex2("../textures/letroll.png", GL_RGBA, GL_TEXTURE_2D, GL_TEXTURE1);
-
-	//float borderColor[] = { 1.0f, 1.0f, 0.0f, 1.0f };
-	//glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);//don't use mipmaps for mag; mipmaps only used on smaller objects
 
 	shader1.use();
 	shader1.setInt("texture1", 0);

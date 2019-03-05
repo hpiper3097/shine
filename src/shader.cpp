@@ -1,10 +1,57 @@
-#include "../include/glad.h"
 #include "../include/shader.h"
 
-#include <string>
-#include <fstream>
-#include <sstream>
-#include <iostream>
+/*
+Shader::Shader(std::string source, GLenum shaderType) : _id(0)
+{
+	if(!(shaderType == GL_VERTEX_SHADER || shaderType == GL_GEOMETRY_SHADER || shaderType == GL_FRAGMENT_SHADER))
+	{
+		std::cout << "Invalid shader type\n";
+		throw std::exception();
+	}
+
+	//load shader
+	std::ifstream fp(source);
+	if(fp.is_open())
+	{
+		std::stringstream buf;
+		buf << fp.rdbuf();
+
+		if((_id = glCreateShader(shaderType) != 0)
+		{
+			_source = buf.str();
+			const char* sourceChar = _source.c_str();
+			glShaderSource(_id, 1, &sourceChar, nullptr);
+		} else
+		{
+			std::cout << "GL could not create new shader\n";
+			throw std::exception();
+		}
+	} else
+	{
+		std::cout << "GLSL source is not found!\n";
+		throw std::exception();
+	}
+	//compile shader
+	glCompileShader(_id);
+	GLint status = 0;
+	glGetShaderiv(_id, GL_COMPILE_STATUS, &status);
+	if (status == GL_FALSE)
+	{
+		GLint infoLogLength;
+		glGetShaderiv(_id, GL_INFO_LOG_LENGTH, &infoLogLength);
+		GLchar* infoLog = (GLchar)malloc(sizeof(GLchar) * (infoLogLength + 1);
+		glGetShaderInfoLog(_id, infoLogLength, nullptr, infoLog);
+		std::cout << "Shader could not compile: " << infoLog << "\n";
+		throw std::exception();
+
+		free(infoLog);
+	}
+}
+
+Shader::~Shader()
+{
+	glDeleteShader(_id);
+}*/
 
 Shader::Shader(const GLchar* vertexPath, const GLchar* fragmentPath)
 {
