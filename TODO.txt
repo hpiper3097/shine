@@ -1,0 +1,4 @@
+write a way to attach textures to shaders in program.cpp (attach texture func)
+add get shader func in program.cpp that returns a shader*
+move camera math to shaders or camera func ?
+input class instead of callbacks in main ?

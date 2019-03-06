@@ -1,11 +1,11 @@
-#ifndef HEADER_H
-#define HEADER_H
+#pragma once
 
 #define NDEBUG
 
 #include "glad.h"
 #include "glfw3.h" //must inculde after glad.h
 #include "shader.h"
+#include "program.h"
 //#include "log.h"
 #include <cassert>
 #include "texture.h"
@@ -18,5 +18,3 @@
 #include <iostream>
 #include "application.h"
 #include "camera.h"
-
-#endif

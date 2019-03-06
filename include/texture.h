@@ -6,10 +6,11 @@
 
 class Texture
 {
-	GLuint id;
+private:
+	GLuint _id;
 
-	const char* dataPath;
-	unsigned char* data;
+	const char* _source;
+	unsigned char* _data;
 	int width, height, nrChannels;
 	GLint format;
 	GLenum prefferedTarget;

@@ -13,10 +13,10 @@ LDIR=../lib
 
 LIBS = -lglfw3 -lGLEW -lGL -lm -lXrandr -lXxf86vm -lXi -lXinerama -lX11 -lpthread -ldl -lGLU -lXcursor
 
-_DEPS = triangle.h application.h camera.h header.h log.h manager.h shader.h singleton.h stb_image.h texture.h glad.h glfw3.h glfw3native.h gtc/matrix_transform.hpp gtc/type_ptr.hpp glm.hpp 
+_DEPS = triangle.h application.h camera.h header.h log.h manager.h shader.h singleton.h stb_image.h texture.h glad.h glfw3.h glfw3native.h gtc/matrix_transform.hpp gtc/type_ptr.hpp glm.hpp #program.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = main.o triangle.o application.o shader.o texture.o glad.o stb_image.o
+_OBJ = main.o triangle.o application.o shader.o texture.o glad.o stb_image.o #program.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: %.cpp $(DEPS)

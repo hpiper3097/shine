@@ -5,10 +5,10 @@
 
 Texture::Texture(const char* path, GLint format, GLenum target, GLenum channel)
 {
-	glGenTextures(1, &id);
+	glGenTextures(1, &_id);
 	glActiveTexture(channel);
-	glBindTexture(target, id);
-	dataPath = path;
+	glBindTexture(target, _id);
+	_source = path;
 	prefferedTarget = target;
 	prefferedChannel = channel;
 	this->format = format;
@@ -22,12 +22,12 @@ Texture::Texture(const char* path, GLint format, GLenum target, GLenum channel)
 
 Texture::~Texture()
 {
-	stbi_image_free(data);
+	stbi_image_free(_data);
 }
 
 GLuint Texture::getID() const noexcept
 {
-	return id;
+	return _id;
 }
 
 int Texture::getWidth() const noexcept
@@ -47,25 +47,25 @@ int Texture::getnrChannels() const noexcept
 
 std::string Texture::getPath() const noexcept //to read the information
 {
-	return dataPath;
+	return _source;
 }
 
 const bool Texture::IsLoaded() const noexcept
 {
-	return data != nullptr;
+	return _data != nullptr;
 }
 
 void Texture::bind() const
 {
-	glBindTexture(prefferedTarget, id);
+	glBindTexture(prefferedTarget, _id);
 }
 
 void Texture::Load(const char* path, GLint format, GLenum target)
 {
-	data = stbi_load(path, &width, &height, &nrChannels, 0);
-	if (data)
+	_data = stbi_load(path, &width, &height, &nrChannels, 0);
+	if (_data)
 	{
-		glTexImage2D(target, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+		glTexImage2D(target, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, _data);
 		glGenerateMipmap(target);
 	}
 	else

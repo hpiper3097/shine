@@ -1,5 +1,4 @@
-#ifndef SHADER_H
-#define SHADER_H
+#pragma once
 
 #include <glm.hpp>
 #include <gtc/type_ptr.hpp>
@@ -33,5 +32,3 @@ public:
 	void setFloat(const std::string &name, float value) const;
 	void setMat4(const std::string &name, glm::mat4 mat) const;
 };
-
-#endif

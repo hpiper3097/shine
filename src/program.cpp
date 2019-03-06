@@ -4,6 +4,7 @@ Program::Program()
 {
 	_programId = glCreateProgram();
 	_shaders = std::vector<Shader*>();
+	_textures = std::vector<Texture*>();
 	_linked = false;
 }
 
